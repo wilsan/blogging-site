@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}This Post Title{% endblock title %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static 'blog/post-detail.css' %}">
+{% endblock css_files %}
+
+{% block content %}
+    <section id="summary">
+        <h2>Post Title</h2>
+        <article>
+            <img src="{% static 'blog/images/munnar.jpeg' %}" alt="Post Title">
+            <address>By Wilson George</address>
+            <div>Last updated on <time>April 14th</time></div>
+        </article>
+    </section>
+
+    <main>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque itaque accusamus sapiente quod, ipsa ab est. Ducimus, modi aut, commodi deserunt minus iure assumenda velit eveniet quia labore nam delectus?
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem nesciunt doloremque laudantium necessitatibus odio officiis accusantium aperiam. Similique cupiditate rem suscipit sint, hic dolor, quis quo expedita porro perferendis consectetur!
+            Praesentium veritatis corrupti, dolorum sequi aut laborum, eaque obcaecati dicta reiciendis tempore, asperiores tempora minus hic in impedit ad voluptas laboriosam veniam assumenda pariatur? Qui, quas. Natus beatae iste similique!
+        </p>
+    </main>
+{% endblock content %}
