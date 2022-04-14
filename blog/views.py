@@ -75,6 +75,7 @@ all_posts = [
     }
 ]
 
+
 def get_date(post):
     return post['date']
 
@@ -82,16 +83,23 @@ def get_date(post):
 
 
 def starting_page(request):
-    sorted_posts = sorted(all_posts, key=get_date)  # sort posts by the 'date' key in each post
-    latest_posts = sorted_posts[-3:]  # get the latest 3 posts from sorted_posts
-    return render(request, 'blog/index.html', {  # passing the context to render() 
+    # sort posts by the 'date' key in each post
+    sorted_posts = sorted(all_posts, key=get_date)
+    # get the latest 3 posts from sorted_posts
+    latest_posts = sorted_posts[-3:]
+    return render(request, 'blog/index.html', {  # passing the context to render()
         'posts': latest_posts
     })
 
 
 def posts(request):
-    return render(request, 'blog/all-posts.html')
+    return render(request, 'blog/all-posts.html', {
+        'all_posts': all_posts
+    })
 
 
 def post_detail(request, slug):
-    return render(request, 'blog/post-detail.html')
+    identified_post = next(post for post in all_posts if post['slug'] == slug)
+    return render(request, 'blog/post-detail.html', {
+        'post': identified_post
+    })
