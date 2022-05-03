@@ -16,6 +16,9 @@ class Author(models.Model):
 class Tag(models.Model):
     caption = models.CharField(max_length=20)
 
+    def __str__(self):
+        return self.caption
+
 
 class Post(models.Model):
     title = models.CharField(max_length=100)
@@ -26,9 +29,6 @@ class Post(models.Model):
     slug = models.SlugField(unique=True, db_index=True)
     # for SlugField() db_index is True by default
     # setting uniqie=True also automatically sets db_index=True
-    
+
     author = models.ForeignKey(Author, on_delete=models.SET_NULL, null=True, related_name='posts')
     tags = models.ManyToManyField(Tag)
-
-    def __str__(self):
-        return self.title
